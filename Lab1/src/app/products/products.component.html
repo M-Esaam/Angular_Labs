@@ -1,0 +1,51 @@
+<hr><hr><hr><hr>
+<div style="display: block;text-align: center;">
+<h1>{{ StoreName }}</h1>
+<img [src]="StoreLogo" alt="Store Logo">
+<h3>We offer an explicit discount of: {{ Discount }}</h3>
+</div>
+
+
+<div style="text-align: center;">
+
+
+<select>
+  <option *ngFor="let cat of CategoryList "value="cat.id">{{cat.name}}</option>
+</select>
+
+
+<ng-template #thx>
+  <div class="text-center">Thanks for purchasing from our Store {{ClientName}}</div>
+</ng-template>
+<br><br>
+<button (click)="buyProduct()">Change IsPurchased </button><br><br>
+<table *ngIf="IsPurchased; else thx" class="table table-bordered table-hover text-center p-2 w-75 mx-auto border">
+<thead class="border">
+  <th class="border">ID</th>
+  <th class="border">Name</th>
+  <th class="border">Quantity</th>
+  <th class="border">Price</th>
+  <th class="border">Img</th>
+</thead>
+<tbody class="border">
+  <tr *ngFor="let product of ProductList" class="border">
+    <td class="border">{{product.id}}</td>
+    <td class="border">{{product.name}}</td>
+    <td class="border">{{product.quantity}}</td>
+    <td class="border">{{product.price}}</td>
+    <td class="border"><img width="100px" height="100px" [src]= "product.img" alt=""/></td>
+
+  </tr>
+</tbody>
+</table>
+
+<h2>{{StoreName|lowercase}}</h2>
+<h3 *ngIf="Discount != 'No Discount'">{{Discount | percent}}</h3>
+
+<label for="Name">Name</label>
+ <input type="text" id="Name" class="from-control" [(ngModel)]="ClientName"/>
+{{ClientName}}
+<hr>
+<hr>
+
+</div>

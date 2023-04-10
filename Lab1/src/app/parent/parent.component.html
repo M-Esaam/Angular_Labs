@@ -1,0 +1,27 @@
+<div style="text-align: center;">
+<p>parent works!</p>
+<button (click)="getProductsData()">Get data</button>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price }}</td>
+        <td><img src="assets/{{ product.img }}" alt="{{ product.name }}" height="50"></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<app-child></app-child>
+<button (click)="sayHello()">Say Hello from child component</button>
+</div>
